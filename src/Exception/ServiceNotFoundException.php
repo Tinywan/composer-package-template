@@ -2,7 +2,6 @@
 
 /**
  * @desc ServiceNotFoundException
- * @author Tinywan(ShaoBo Wan)
  */
 
 declare(strict_types=1);

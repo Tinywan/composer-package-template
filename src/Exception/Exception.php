@@ -2,7 +2,6 @@
 
 /**
  * @desc Exception
- * @author Tinywan(ShaoBo Wan)
  */
 
 declare(strict_types=1);
@@ -17,6 +16,8 @@ class Exception extends \Exception
      * 关于配置.
      */
     public const CONFIG_ERROR = 3000;
+
+    public const SERVICE_NOT_FOUND_ERROR = 5000;
 
     /**
      * raw.

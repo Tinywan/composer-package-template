@@ -2,7 +2,6 @@
 
 /**
  * @desc Hello
- * @author Tinywan(ShaoBo Wan)
  */
 
 declare(strict_types=1);
@@ -37,6 +36,7 @@ class Hello
         foreach ($numbers as $n) {
             $acc += $n;
         }
+
         return $acc;
     }
 
