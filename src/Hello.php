@@ -10,19 +10,23 @@ namespace Tinywan\Template;
 
 class Hello
 {
-    public function isBoole(): bool{
+    public function isBoole(): bool
+    {
         return true;
     }
 
-    public function isEmpty (){
+    public function isEmpty()
+    {
         return '';
     }
 
-    public function isYearString(): string{
-        return 'isYear' ;
+    public function isYearString(): string
+    {
+        return 'isYear';
     }
 
-    public function isStrictString(string $string): string{
+    public function isStrictString(string $string): string
+    {
         return 'isStrictString';
     }
 
@@ -44,5 +48,20 @@ class Hello
     public function isArrayMerge(array ...$arrays): array
     {
         return array_merge($arrays);
+    }
+
+    public function csFixer(): array
+    {
+        $a = 123;
+        $bb = 123;
+
+        if ($a = $bb) {
+            echo 1;
+        }
+
+        unset($a, $bb);
+        $aa = [1, 22, 333, 44];
+
+        return [];
     }
 }
