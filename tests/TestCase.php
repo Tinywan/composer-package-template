@@ -3,6 +3,8 @@
 namespace Tinywan\Template\Tests;
 
 
+use Tinywan\Template\App;
+
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -10,6 +12,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        $config = [];
+        $config = [
+            'alipay' => [
+                'default' => [
+                    'app_id' => 'yansongda',
+                ],
+            ],
+        ];
+        App::config($config);
     }
 }

@@ -1,6 +1,11 @@
 # composer-package-template
 composer-package-template
 
+## 约定
+- Contract 合同; 合约; 契约;
+- Provider 供应者; 提供者; 供养人（在执行完所请求的操作后，供应者Web服务返回所期望的值）;
+- Parser 解析器
+
 ## Installation
 
 ```php
