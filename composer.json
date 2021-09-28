@@ -38,7 +38,8 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always"
+        "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "cs-fix": "php-cs-fixer fix --dry-run --diff 1>&2"
     },
     "repositories": {
         "packagist": {

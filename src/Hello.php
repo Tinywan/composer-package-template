@@ -10,23 +10,19 @@ namespace Tinywan\Template;
 
 class Hello
 {
-    public function isBoole(): bool
-    {
+    public function isBoole(): bool{
         return true;
     }
 
-    public function isEmpty()
-    {
+    public function isEmpty (){
         return '';
     }
 
-    public function isYearString(): string
-    {
-        return 'isYear';
+    public function isYearString(): string{
+        return 'isYear' ;
     }
 
-    public function isStrictString(string $string): string
-    {
+    public function isStrictString(string $string): string{
         return 'isStrictString';
     }
 
