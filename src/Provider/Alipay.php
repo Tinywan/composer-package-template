@@ -10,9 +10,6 @@ use Yansongda\Supports\Str;
 class Alipay extends AbstractProvider
 {
     /**
-     * @param string $shortcut
-     * @param array  $params
-     *
      * @return mixed
      */
     public function __call(string $shortcut, array $params)

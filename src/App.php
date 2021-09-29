@@ -21,6 +21,21 @@ use Tinywan\Template\Service\LoggerServiceProvider;
 class App
 {
     /**
+     * 正常模式.
+     */
+    public const MODE_NORMAL = 0;
+
+    /**
+     * 沙箱模式.
+     */
+    public const MODE_SANDBOX = 1;
+
+    /**
+     * 服务商模式.
+     */
+    public const MODE_SERVICE = 2;
+
+    /**
      * @var string[]
      */
     protected $service = [

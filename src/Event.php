@@ -7,6 +7,11 @@ namespace Tinywan\Template;
 use Tinywan\Template\Contract\EventDispatcherInterface;
 use Tinywan\Template\Exception\InvalidConfigException;
 
+/**
+ * Class Event.
+ *
+ * @method static Event\Event dispatch(object $event)
+ */
 class Event
 {
     public static function __callStatic(string $method, array $args): void

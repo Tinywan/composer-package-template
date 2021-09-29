@@ -9,13 +9,13 @@ composer-package-template
 ## Installation
 
 ```
-docker run --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer install
+docker run -it -v e:/dnmp/www/composer-package-template:/app composer install
 ```
 
 ## PSR规范之 php-cs-fixer 
 
 ### （1）格式化项目
-```php
+```
 /var/www/composer-package-template # vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix
 Loaded config default from "/var/www/composer-package-template/.php-cs-fixer.php".
    1) composer-package-template/src/Exception/Exception.php
@@ -27,7 +27,7 @@ Loaded config default from "/var/www/composer-package-template/.php-cs-fixer.php
 
 ### （2）通过脚本格式代码
 ```
-$ docker run  --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script phpcs
+$ docker run -it -v e:/dnmp/www/composer-package-template:/app composer run-script cs-fix
 > vendor/bin/php-cs-fixer fix
 Loaded config default from "/app/.php-cs-fixer.php".
    1) /app/src/Hello.php
@@ -62,7 +62,7 @@ php php-cs-fixer.phar fix /path/to/project --level=symfony
 ### （3）通过 composer run-script
 
 ```
-$ docker run --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script test
+$ docker run -it -v e:/dnmp/www/composer-package-template:/app composer run-script test
 > vendor/bin/php-cs-fixer fix
 Loaded config default from "/app/.php-cs-fixer.php".
    1) /app/src/Hello.php

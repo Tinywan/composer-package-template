@@ -46,7 +46,7 @@
     },
     "scripts": {
         "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always",
-        "phpcs": "vendor/bin/php-cs-fixer fix"
+        "cs-fix": "./vendor/bin/php-cs-fixer fix"
     },
     "repositories": {
         "packagist": {
