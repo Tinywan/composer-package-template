@@ -13,10 +13,6 @@ interface ConfigInterface
      */
     public function get(string $key, $default = null);
 
-    /**
-     * @param string $key
-     * @return bool
-     */
     public function has(string $key): bool;
 
     /**

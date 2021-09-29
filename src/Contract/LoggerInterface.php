@@ -6,5 +6,4 @@ namespace Tinywan\Template\Contract;
 
 interface LoggerInterface extends \Psr\Log\LoggerInterface
 {
-
 }

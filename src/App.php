@@ -28,9 +28,11 @@ class App
     ];
 
     /**
+     * kernel  Service.
+     *
      * @var string[]
      */
-    private $coreService = [
+    private $kernelService = [
         ConfigServiceProvider::class,
         LoggerServiceProvider::class,
         HttpServiceProvider::class,
@@ -44,7 +46,7 @@ class App
     private function __construct(array $config)
     {
         $this->initContainer();
-        $this->registerServices($config);
+        $this->registerKernelService($config);
     }
 
     /**
@@ -63,8 +65,6 @@ class App
 
     /**
      * 初始化容器、配置等信息.
-     * @param array $config
-     * @return App
      */
     public static function config(array $config = []): App
     {
@@ -106,9 +106,7 @@ class App
     }
 
     /**
-     * 判断容器中是否存在类及标识
-     * @param string $service
-     * @return bool
+     * 判断容器中是否存在类及标识.
      */
     public static function has(string $service): bool
     {
@@ -116,8 +114,8 @@ class App
     }
 
     /**
-     * getContainer
-     * @return Container
+     * getContainer.
+     *
      * @throws ContainerNotFoundException
      */
     public static function getContainer(): Container
@@ -126,12 +124,11 @@ class App
             return self::$container;
         }
 
-        throw new ContainerNotFoundException('You should init/config PAY first', Exception\Exception::CONTAINER_NOT_FOUND);
+        throw new ContainerNotFoundException('You should init/config App first', Exception\Exception::CONTAINER_NOT_FOUND);
     }
 
     /**
      * has Container.
-     * @return bool
      */
     public static function hasContainer(): bool
     {
@@ -139,10 +136,10 @@ class App
     }
 
     /**
-     * 创建类的容器实例
-     * @param string $service
-     * @param array $parameters
+     * 创建类的容器实例.
+     *
      * @return mixed
+     *
      * @throws ContainerDependencyException
      * @throws ContainerException
      * @throws ServiceNotFoundException
@@ -161,7 +158,7 @@ class App
     }
 
     /**
-     * clear
+     * clear.
      */
     public static function clear(): void
     {
@@ -169,7 +166,24 @@ class App
     }
 
     /**
-     * initContainer
+     * 注册服务
+     *
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
+     */
+    public static function registerService(string $service, array $config): void
+    {
+        $var = self::get($service);
+
+        if ($var instanceof ServiceProviderInterface) {
+            $var->register(self::get(App::class), $config);
+        }
+    }
+
+    /**
+     * initContainer.
+     *
      * @throws ContainerException
      */
     private function initContainer(): void
@@ -189,32 +203,15 @@ class App
     }
 
     /**
-     * 注册服务
-     * @param string $service
-     * @param array $config
+     * register Kernel service.
+     *
      * @throws ContainerDependencyException
      * @throws ContainerException
      * @throws ServiceNotFoundException
      */
-    public static function registerService(string $service, array $config): void
+    private function registerKernelService(array $config): void
     {
-        $var = self::get($service);
-
-        if ($var instanceof ServiceProviderInterface) {
-            $var->register(self::get(App::class), $config);
-        }
-    }
-
-    /**
-     * register services.
-     * @param array $config
-     * @throws ContainerDependencyException
-     * @throws ContainerException
-     * @throws ServiceNotFoundException
-     */
-    private function registerServices(array $config): void
-    {
-        foreach (array_merge($this->coreService, $this->service) as $service) {
+        foreach (array_merge($this->kernelService, $this->service) as $service) {
             self::registerService($service, $config);
         }
     }

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tinywan\Template;
 
+use ArrayAccess;
 use JsonSerializable as JsonSerializableInterface;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 use Serializable as SerializableInterface;
-use ArrayAccess;
 use Yansongda\Supports\Collection;
 use Yansongda\Supports\Traits\Accessable;
 use Yansongda\Supports\Traits\Arrayable;
@@ -134,16 +134,12 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
-    /**
-     * @return MessageInterface|null
-     */
     public function getDestinationOrigin(): ?MessageInterface
     {
         return $this->destinationOrigin;
     }
 
     /**
-     * @param MessageInterface|null $destinationOrigin
      * @return $this
      */
     public function setDestinationOrigin(?MessageInterface $destinationOrigin): Rocket

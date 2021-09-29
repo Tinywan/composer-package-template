@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Tinywan\Template\Event;
 
+use Tinywan\Template\Rocket;
+
 class Event
 {
     /**
-     * @var \Yansongda\Pay\Rocket|null
+     * @var \Tinywan\Template\Rocket|null
      */
     public $rocket;
 

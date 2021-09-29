@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tinywan\Template\Event;
 
+use Tinywan\Template\Rocket;
+
 class MethodCalled extends Event
 {
     /**

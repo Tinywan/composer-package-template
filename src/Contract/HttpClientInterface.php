@@ -6,7 +6,6 @@ namespace Tinywan\Template\Contract;
 
 use GuzzleHttp\ClientInterface;
 
-interface HttpClientInterface extends ClientInterface,\Psr\Http\Client\ClientInterface
+interface HttpClientInterface extends ClientInterface, \Psr\Http\Client\ClientInterface
 {
-
 }

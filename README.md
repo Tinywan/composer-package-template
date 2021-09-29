@@ -8,8 +8,8 @@ composer-package-template
 
 ## Installation
 
-```php
-docker run --rm --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer install
+```
+docker run --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer install
 ```
 
 ## PSR规范之 php-cs-fixer 
@@ -26,8 +26,8 @@ Loaded config default from "/var/www/composer-package-template/.php-cs-fixer.php
 ```
 
 ### （2）通过脚本格式代码
-```php
-$ docker run --rm --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script phpcs
+```
+$ docker run  --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script phpcs
 > vendor/bin/php-cs-fixer fix
 Loaded config default from "/app/.php-cs-fixer.php".
    1) /app/src/Hello.php
@@ -36,7 +36,7 @@ Fixed all files in 0.492 seconds, 12.000 MB memory used
 ```
 
 ### 选项
-```php
+```
 --format 输出文件格式，支持txt、xml
 --verbose 
 --level 应用哪种PSR类型。支持psr0、psr1、psr2。默认是psr2
@@ -60,11 +60,16 @@ php php-cs-fixer.phar fix /path/to/project --level=symfony
 ```
 
 ### （3）通过 composer run-script
-```php
-$ docker run --rm --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script test
+
+```
+$ docker run --interactive --tty -v e:/dnmp/www/composer-package-template:/app composer run-script test
 > vendor/bin/php-cs-fixer fix
 Loaded config default from "/app/.php-cs-fixer.php".
    1) /app/src/Hello.php
 
 Fixed all files in 0.492 seconds, 12.000 MB memory used
 ```
+
+### PHPUnit settings are not configured.
+
+![PHPUnit settings](./PHPUnit%20settings.png)

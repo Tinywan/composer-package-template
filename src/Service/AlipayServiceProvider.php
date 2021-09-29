@@ -16,6 +16,7 @@ class AlipayServiceProvider implements ServiceProviderInterface
     {
         $service = function () {
             App::set(ParserInterface::class, CollectionParser::class);
+
             return new Alipay();
         };
 

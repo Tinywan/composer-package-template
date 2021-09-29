@@ -11,16 +11,17 @@ class Alipay extends AbstractProvider
 {
     /**
      * @param string $shortcut
-     * @param array $params
+     * @param array  $params
+     *
      * @return mixed
      */
-//    public function __call(string $shortcut, array $params)
-//    {
-//        $plugin = '\\Yansongda\\Pay\\Plugin\\Alipay\\Shortcut\\'.
-//            Str::studly($shortcut).'Shortcut';
-//
-//        return $this->call($plugin, ...$params);
-//    }
+    public function __call(string $shortcut, array $params)
+    {
+        $plugin = '\\Yansongda\\Pay\\Plugin\\Alipay\\Shortcut\\'.
+            Str::studly($shortcut).'Shortcut';
+
+        return $this->call($plugin, ...$params);
+    }
 
     public function find($order)
     {
@@ -28,6 +29,6 @@ class Alipay extends AbstractProvider
 
         Event::dispatch(new Event\MethodCalled('wechat', __METHOD__, $order, null));
 
-//        return $this->__call('query', [$order]);
+        return $this->__call('query', [$order]);
     }
 }

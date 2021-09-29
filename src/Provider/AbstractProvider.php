@@ -8,5 +8,4 @@ use Tinywan\Template\Contract\ProviderInterface;
 
 abstract class AbstractProvider implements ProviderInterface
 {
-
 }
