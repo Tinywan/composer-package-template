@@ -21,40 +21,47 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
     use Serializable;
 
     /**
-     * @var \Psr\Http\Message\RequestInterface|null
+     * @var RequestInterface|null
      */
-    private $radar = null;
+    private ?RequestInterface $radar = null;
 
     /**
      * @var array
      */
-    private $params = [];
+    private array $params = [];
 
     /**
-     * @var \Yansongda\Supports\Collection|null
+     * @var Collection|null
      */
-    private $payload = null;
+    private ?Collection $payload = null;
 
     /**
      * @var string|null
      */
-    private $direction = null;
+    private ?string $direction = null;
 
     /**
-     * @var \Yansongda\Supports\Collection|\Psr\Http\Message\MessageInterface|array|null
+     * @var Collection|MessageInterface|array|null
      */
     private $destination = null;
 
     /**
-     * @var \Psr\Http\Message\MessageInterface|null
+     * @var MessageInterface|null
      */
-    private $destinationOrigin = null;
+    private ?MessageInterface $destinationOrigin = null;
 
+    /**
+     * @return RequestInterface|null
+     */
     public function getRadar(): ?RequestInterface
     {
         return $this->radar;
     }
 
+    /**
+     * @param RequestInterface|null $radar
+     * @return $this
+     */
     public function setRadar(?RequestInterface $radar): Rocket
     {
         $this->radar = $radar;
@@ -62,11 +69,18 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getParams(): array
     {
         return $this->params;
     }
 
+    /**
+     * @param array $params
+     * @return $this
+     */
     public function setParams(array $params): Rocket
     {
         $this->params = $params;
@@ -74,6 +88,10 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @param array $params
+     * @return $this
+     */
     public function mergeParams(array $params): Rocket
     {
         $this->params = array_merge($this->params, $params);
@@ -81,11 +99,18 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @return Collection|null
+     */
     public function getPayload(): ?Collection
     {
         return $this->payload;
     }
 
+    /**
+     * @param Collection|null $payload
+     * @return $this
+     */
     public function setPayload(?Collection $payload): Rocket
     {
         $this->payload = $payload;
@@ -93,6 +118,10 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @param array $payload
+     * @return $this
+     */
     public function mergePayload(array $payload): Rocket
     {
         if (empty($this->payload)) {
@@ -104,11 +133,18 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDirection(): ?string
     {
         return $this->direction;
     }
 
+    /**
+     * @param string|null $direction
+     * @return $this
+     */
     public function setDirection(?string $direction): Rocket
     {
         $this->direction = $direction;
@@ -117,7 +153,7 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
     }
 
     /**
-     * @return \Psr\Http\Message\MessageInterface|\Yansongda\Supports\Collection|array|null
+     * @return MessageInterface|Collection|array|null
      */
     public function getDestination()
     {
@@ -125,7 +161,7 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
     }
 
     /**
-     * @param \Psr\Http\Message\MessageInterface|\Yansongda\Supports\Collection|array|null $destination
+     * @param MessageInterface|Collection|array|null $destination
      */
     public function setDestination($destination): Rocket
     {

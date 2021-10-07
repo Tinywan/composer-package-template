@@ -14,6 +14,14 @@ use Tinywan\Template\Exception\InvalidConfigException;
  */
 class Event
 {
+    /**
+     * @param string $method
+     * @param array $args
+     * @throws Exception\ContainerDependencyException
+     * @throws Exception\ContainerException
+     * @throws Exception\ServiceNotFoundException
+     * @throws InvalidConfigException
+     */
     public static function __callStatic(string $method, array $args): void
     {
         if (!App::hasContainer() || !App::has(EventDispatcherInterface::class)) {

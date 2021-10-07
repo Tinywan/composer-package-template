@@ -38,7 +38,7 @@ class App
     /**
      * @var string[]
      */
-    protected $service = [
+    protected array $service = [
         AlipayServiceProvider::class,
     ];
 
@@ -47,27 +47,40 @@ class App
      *
      * @var string[]
      */
-    private $kernelService = [
+    private array $kernelService = [
         ConfigServiceProvider::class,
         LoggerServiceProvider::class,
         HttpServiceProvider::class,
     ];
 
     /**
-     * @var \DI\Container|null
+     * @var Container|null
      */
-    private static $container = null;
+    private static ?Container $container = null;
 
     private function __construct(array $config)
     {
-        $this->initContainer();
-        $this->registerKernelService($config);
+        try {
+            $this->initContainer();
+        } catch (ContainerException $e) {
+        }
+        try {
+            $this->registerKernelService($config);
+        } catch (ContainerDependencyException $e) {
+        } catch (ContainerException $e) {
+        } catch (ServiceNotFoundException $e) {
+        }
     }
 
     /**
      * __callStatic.
      *
+     * @param string $service
+     * @param array $config
      * @return mixed
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
      */
     public static function __callStatic(string $service, array $config)
     {
@@ -80,6 +93,11 @@ class App
 
     /**
      * 初始化容器、配置等信息.
+     * @param array $config
+     * @return App
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
      */
     public static function config(array $config = []): App
     {
@@ -93,7 +111,11 @@ class App
     /**
      * 获取容器实例.
      *
+     * @param string $service
      * @return mixed
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
      */
     public static function get(string $service)
     {
@@ -111,9 +133,10 @@ class App
     /**
      * 定义.
      *
+     * @param string $name
      * @param mixed $value
      *
-     * @throws ContainerException
+     * @throws ContainerNotFoundException
      */
     public static function set(string $name, $value): void
     {
@@ -122,6 +145,9 @@ class App
 
     /**
      * 判断容器中是否存在类及标识.
+     * @param string $service
+     * @return bool
+     * @throws ContainerNotFoundException
      */
     public static function has(string $service): bool
     {
@@ -130,7 +156,7 @@ class App
 
     /**
      * getContainer.
-     *
+     * @return Container
      * @throws ContainerNotFoundException
      */
     public static function getContainer(): Container
@@ -144,6 +170,7 @@ class App
 
     /**
      * has Container.
+     * @return bool
      */
     public static function hasContainer(): bool
     {
@@ -153,6 +180,8 @@ class App
     /**
      * 创建类的容器实例.
      *
+     * @param string $service
+     * @param array $parameters
      * @return mixed
      *
      * @throws ContainerDependencyException
@@ -183,6 +212,8 @@ class App
     /**
      * 注册服务
      *
+     * @param string $service
+     * @param array $config
      * @throws ContainerDependencyException
      * @throws ContainerException
      * @throws ServiceNotFoundException
@@ -220,6 +251,7 @@ class App
     /**
      * register Kernel service.
      *
+     * @param array $config
      * @throws ContainerDependencyException
      * @throws ContainerException
      * @throws ServiceNotFoundException
