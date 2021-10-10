@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "ext-json": "*",
         "psr/event-dispatcher": "^1.0",
         "psr/log": "^1.1",

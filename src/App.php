@@ -58,6 +58,9 @@ class App
      */
     private static ?Container $container = null;
 
+    /**
+     * @param array $config
+     */
     private function __construct(array $config)
     {
         try {
@@ -109,7 +112,7 @@ class App
     }
 
     /**
-     * 获取容器实例.
+     * get container instance
      *
      * @param string $service
      * @return mixed
@@ -131,7 +134,7 @@ class App
     }
 
     /**
-     * 定义.
+     * set container instance.
      *
      * @param string $name
      * @param mixed $value
