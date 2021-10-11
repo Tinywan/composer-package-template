@@ -2,14 +2,17 @@
 
 declare(strict_types=1);
 
+use Tinywan\Template\Exception\ContainerDependencyException;
+use Tinywan\Template\Exception\ContainerException;
+use Tinywan\Template\Exception\ServiceNotFoundException;
 use Yansongda\Supports\Config;
 use Yansongda\Supports\Str;
 
 if (!function_exists('get_alipay_config')) {
     /**
-     * @throws \Tinywan\Template\Exception\ContainerDependencyException
-     * @throws \Tinywan\Template\Exception\ContainerException
-     * @throws \Tinywan\Template\Exception\ServiceNotFoundException
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
      */
     function get_alipay_config(array $params = []): Config
     {

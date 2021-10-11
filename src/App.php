@@ -231,16 +231,15 @@ class App
     }
 
     /**
-     * initContainer.
+     * init container.
      *
      * @throws ContainerException
      */
     private function initContainer(): void
     {
-        $builder = new ContainerBuilder();
-        $builder->useAnnotations(false);
-
         try {
+            $builder = new ContainerBuilder();
+            $builder->useAnnotations(false);
             $container = $builder->build();
             $container->set(ContainerException ::class, $container);
             $container->set(\Psr\Container\ContainerInterface::class, $container);

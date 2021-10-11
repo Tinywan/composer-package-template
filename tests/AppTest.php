@@ -133,7 +133,6 @@ class AppTest extends TestCase
 //    {
 //        $config = ['name' => 'tinywan'];
 //        App::config($config);
-//
 //        self::assertInstanceOf(EventDispatcher::class, App::get(EventDispatcherInterface::class));
 //    }
 

@@ -19,7 +19,11 @@ class InvalidResponseException extends Exception
     /**
      * Bootstrap.
      *
+     * @param int $code
+     * @param string $message
      * @param mixed $extra
+     * @param \Throwable|null $exception
+     * @param \Throwable|null $previous
      */
     public function __construct(
         int $code = self::RESPONSE_ERROR,

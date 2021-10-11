@@ -11,7 +11,10 @@ class ContainerDependencyException extends ContainerException
     /**
      * Bootstrap.
      *
+     * @param string $message
+     * @param int $code
      * @param mixed $extra
+     * @param Throwable|null $previous
      */
     public function __construct(
         string $message = 'Dependency Resolve Error',

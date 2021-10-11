@@ -15,7 +15,10 @@ class InvalidConfigException extends Exception
     /**
      * Bootstrap.
      *
+     * @param int $code
+     * @param string $message
      * @param mixed $extra
+     * @param Throwable|null $previous
      */
     public function __construct(int $code = self::CONFIG_ERROR, string $message = 'Config Error', $extra = null, Throwable $previous = null)
     {

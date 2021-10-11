@@ -176,6 +176,7 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
     }
 
     /**
+     * @param MessageInterface|null $destinationOrigin
      * @return $this
      */
     public function setDestinationOrigin(?MessageInterface $destinationOrigin): Rocket

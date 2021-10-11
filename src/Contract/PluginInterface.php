@@ -12,6 +12,12 @@ use Tinywan\Template\Rocket;
 
 interface PluginInterface
 {
-    // 中间件的入口执行方法必须是assembly方法，而且第一个参数是Rocket对象，第二个参数是一个闭包
+    /**
+     * @desc: 中间件的入口执行方法必须是assembly方法，而且第一个参数是Rocket对象，第二个参数是一个闭包
+     * @param Rocket $rocket
+     * @param \Closure $next
+     * @return Rocket
+     * @author Tinywan(ShaoBo Wan)
+     */
     public function assembly(Rocket $rocket, \Closure $next): Rocket;
 }
