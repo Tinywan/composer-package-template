@@ -9,8 +9,11 @@ declare(strict_types=1);
 namespace Tinywan\Template\Plugin\Alipay;
 
 use Tinywan\Template\Contract\PluginInterface;
+use Tinywan\Template\Exception\ContainerDependencyException;
+use Tinywan\Template\Exception\ContainerException;
 use Tinywan\Template\Exception\Exception;
 use Tinywan\Template\Exception\InvalidConfigException;
+use Tinywan\Template\Exception\ServiceNotFoundException;
 use Tinywan\Template\Logger;
 use Tinywan\Template\Rocket;
 use Yansongda\Supports\Str;
@@ -19,6 +22,9 @@ class SignPlugin implements PluginInterface
 {
     /**
      * @desc: 装配
+     * @param Rocket $rocket
+     * @param \Closure $next
+     * @return Rocket
      */
     public function assembly(Rocket $rocket, \Closure $next): Rocket
     {
@@ -55,6 +61,12 @@ class SignPlugin implements PluginInterface
 
     /**
      * @desc: 获取签名
+     * @param Rocket $rocket
+     * @return string
+     * @throws InvalidConfigException
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
      */
     protected function getSign(Rocket $rocket): string
     {
@@ -71,6 +83,16 @@ class SignPlugin implements PluginInterface
         return $sign;
     }
 
+    /**
+     * @desc: 方法描述
+     * @param array $params
+     * @return resource|string
+     * @throws InvalidConfigException
+     * @throws ContainerDependencyException
+     * @throws ContainerException
+     * @throws ServiceNotFoundException
+     * @author Tinywan(ShaoBo Wan)
+     */
     protected function getPrivateKey(array $params)
     {
         $privateKey = get_alipay_config($params)->get('app_secret_cert');

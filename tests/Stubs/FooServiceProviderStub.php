@@ -10,18 +10,18 @@ namespace Tinywan\Template\Tests\Stubs;
 
 use Tinywan\Template\App;
 use Tinywan\Template\Contract\ServiceProviderInterface;
+use Tinywan\Template\Exception\ContainerException;
 
 class FooServiceProviderStub implements ServiceProviderInterface
 {
     /**
      * @param App $app
      * @param array|null $data
-     * @throws \Tinywan\Template\Exception\ContainerException
+     * @throws ContainerException
      * @author Tinywan(ShaoBo Wan)
      */
     public function register(App $app, ?array $data = null): void
     {
-        // TODO: Implement register() method.
         $app::set('foo', 'bar');
     }
 }
