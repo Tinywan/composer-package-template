@@ -14,7 +14,7 @@ use Tinywan\Template\Contract\PluginInterface;
 use Tinywan\Template\Logger;
 use Tinywan\Template\Rocket;
 
-class GeneralPlugin implements PluginInterface
+abstract class GeneralPlugin implements PluginInterface
 {
     public function assembly(Rocket $rocket, \Closure $next): Rocket
     {
@@ -28,6 +28,12 @@ class GeneralPlugin implements PluginInterface
         return $next($rocket);
     }
 
+    /**
+     * @desc: 方法描述
+     * @param Rocket $rocket
+     * @return RequestInterface
+     * @author Tinywan(ShaoBo Wan)
+     */
     protected function getRequest(Rocket $rocket): RequestInterface
     {
         return new Request(
@@ -40,15 +46,6 @@ class GeneralPlugin implements PluginInterface
     protected function getMethod(): string
     {
         return 'POST';
-    }
-
-    protected function getUrl(Rocket $rocket): string
-    {
-        $params = $rocket->getParams();
-        $mode = get_wechat_config($params)->get('mode');
-
-        return get_wechat_base_uri($params).
-            (Pay::MODE_SERVICE == $mode ? $this->getPartnerUri($rocket) : $this->getUri($rocket));
     }
 
     protected function getHeaders(): array

@@ -6,9 +6,9 @@ namespace Tinywan\Template;
 
 use ArrayAccess;
 use JsonSerializable as JsonSerializableInterface;
+use Serializable as SerializableInterface;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
-use Serializable as SerializableInterface;
 use Yansongda\Supports\Collection;
 use Yansongda\Supports\Traits\Accessable;
 use Yansongda\Supports\Traits\Arrayable;
@@ -161,7 +161,10 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
     }
 
     /**
-     * @param MessageInterface|Collection|array|null $destination
+     * @desc: Psr\Http\Message\RequestInterface
+     * @param $destination
+     * @return $this
+     * @author Tinywan(ShaoBo Wan)
      */
     public function setDestination($destination): Rocket
     {
@@ -170,14 +173,21 @@ class Rocket implements JsonSerializableInterface, SerializableInterface, ArrayA
         return $this;
     }
 
+    /**
+     * @desc:  Psr\Http\Message\ResponseInterface
+     * @return MessageInterface|null
+     * @author Tinywan(ShaoBo Wan)
+     */
     public function getDestinationOrigin(): ?MessageInterface
     {
         return $this->destinationOrigin;
     }
 
     /**
+     * @desc: Psr\Http\Message\RequestInterface
      * @param MessageInterface|null $destinationOrigin
      * @return $this
+     * @author Tinywan(ShaoBo Wan)
      */
     public function setDestinationOrigin(?MessageInterface $destinationOrigin): Rocket
     {

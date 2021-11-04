@@ -55,7 +55,7 @@ class PreparePlugin implements PluginInterface
             'notify_url' => $this->getNotifyUrl($params),
             'app_auth_token' => '',
             'app_cert_sn' => $this->getAppCertSn($params),
-            'alipay_root_cert_sn' => $this->getAlipayRootCertSn($params),
+            // 'alipay_root_cert_sn' => $this->getAlipayRootCertSn($params),
             'biz_content' => [],
         ];
     }
